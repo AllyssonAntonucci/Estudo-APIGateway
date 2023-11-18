@@ -1,0 +1,38 @@
+﻿@model IEnumerable<modelos.Pedidos>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Lista de Pedidos</h1>
+
+    <form asp-action="ListarPedidos">
+        <button type="submit" class="btn btn-dark">Carregar</button>
+    </form>
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th class="tamColuna" scope="col">Id</th>
+                <th class="tamColuna" scope="col">Data</th>
+                <th class="tamColuna" scope="col">Dados</th>
+            </tr>
+        </thead>
+        @if (Model != null)
+        {
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Data</td>
+                        <td>@p.Dados</td>
+                    </tr>
+                }
+            </tbody>
+        }
+    </table>
+
+
+</div>

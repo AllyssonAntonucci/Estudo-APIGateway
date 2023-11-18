@@ -1,0 +1,48 @@
+﻿@model modelos.RespostaCupom;
+
+@{
+    ViewData["Title"] = "Resgatar Cupom";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4">Resgatar Cupom</h1>
+    
+    <form asp-action="ResgatarCupom">
+        <label class="mb-2">Valor do Cupom</label><br />
+        <input class="mb-2" type="number" asp-for="Valor" /><br />
+        <button type="submit" class="btn btn-dark">Resgatar</button> 
+
+        @if (TempData["AlertMessage"] != null)
+        {
+            <div class="mt-2 alert alert-danger" role="alert">
+                <strong>Erro!</strong> @TempData["AlertMessage"]
+            </div>
+        }
+        
+    </form>
+   
+    
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th class="tamColuna" scope="col">Id</th>
+                <th class="tamColuna" scope="col">Status</th>
+                <th class="tamColuna" scope="col">Valor</th>
+            </tr>
+        </thead>
+    
+    @if (Model != null)
+    {
+        <tbody>
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.Status</td>
+                <td>@Model.Valor</td>
+            </tr>
+            
+        </tbody>
+    }
+    </table>
+</div>
